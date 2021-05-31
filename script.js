@@ -41,8 +41,9 @@ const createBoard = () => {
         squares.push(square)
     }
 }
-
 createBoard()
+
+const clickItem=(squares)=>{
 
 const items = document.querySelectorAll('.item').forEach((el, index) => {
 
@@ -125,7 +126,10 @@ const items = document.querySelectorAll('.item').forEach((el, index) => {
 
         }
     })
+
 })
+}
+clickItem(squares)
 
 const display = () => {
     document.querySelectorAll('.item').forEach(el => {
@@ -134,6 +138,8 @@ const display = () => {
         }
     })
 }
+
+
 
 function flags() {
    
@@ -151,7 +157,7 @@ function flags() {
 
                         e.target.classList.add('flag')
                         howManyFlags--
-                      
+                        buton.removeEventListener('mouseup', MouseRightButton);
                       
                 }
                
@@ -167,6 +173,9 @@ function flags() {
 
 }
 flags()
+
+
+
 
 
     
