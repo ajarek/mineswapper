@@ -3,6 +3,8 @@ let width = 10
 let squares = []
 let bomb = 20
 let draw = []
+let howManyFlags=bomb
+document.querySelector('.info').innerHTML =`left ${howManyFlags} bomb `
 
 function drawBomb(k, n) {
     var numbers = new Array(n)
@@ -45,7 +47,7 @@ createBoard()
 const items = document.querySelectorAll('.item').forEach((el, index) => {
 
     el.addEventListener('click', (e) => {
-      
+
         if (e.target.classList.contains('bomb')) {
             alert('Game over');
             e.target.classList.add('wybuch')
@@ -54,7 +56,22 @@ const items = document.querySelectorAll('.item').forEach((el, index) => {
         } else {
             el.classList.add('pudlo')
             data = squares[index].dataset.alert = ''
-            if (index <9) {
+            if( index==0){
+                if (squares[index + 1].classList.contains('bomb')) data++;
+                if (squares[index + width].classList.contains('bomb')) data++;
+                if (squares[index + width + 1].classList.contains('bomb')) data++;
+            }
+            else if(index==9){
+                if (squares[index - 1].classList.contains('bomb')) data++;
+                if (squares[index + width].classList.contains('bomb')) data++;
+                if (squares[index + width - 1].classList.contains('bomb')) data++;
+            }
+            else if(index==99){
+                if (squares[index - 1].classList.contains('bomb')) data++;
+                if (squares[index - width].classList.contains('bomb')) data++;
+                if (squares[index - width - 1].classList.contains('bomb')) data++;
+            }
+           else if (index < 9) {
                 if (squares[index - 1].classList.contains('bomb')) data++;
                 if (squares[index + 1].classList.contains('bomb')) data++;
                 if (squares[index + width - 1].classList.contains('bomb')) data++;
@@ -88,7 +105,24 @@ const items = document.querySelectorAll('.item').forEach((el, index) => {
                 if (squares[index + width].classList.contains('bomb')) data++;
                 if (squares[index + width + 1].classList.contains('bomb')) data++;
             }
-            squares[index].innerHTML = data
+            if (data == '1') {
+                squares[index].style.color = 'green'
+                squares[index].innerHTML = data
+            }
+            else  if (data == 2) {
+                squares[index].style.color = 'blue'
+                squares[index].innerHTML = data
+            }
+            else   if (data == 3) {
+                squares[index].style.color = 'red'
+                squares[index].innerHTML = data
+            }
+             else {
+                squares[index].style.color = 'rgb(50,10,102)'
+                squares[index].innerHTML = data
+            }
+
+
         }
     })
 })
@@ -102,23 +136,37 @@ const display = () => {
 }
 
 function flags() {
+   
     const portion = document.querySelectorAll('.item')
     portion.forEach(buton => {
+     
         buton.addEventListener('mouseup', MouseRightButton);
 
         function MouseRightButton(e) {
-           
+
             if (typeof e === 'object' && e.target.classList.contains('bomb')) {
                 switch (e.button) {
 
                     case 2:
-                      
-                        e.target.classList.add('flag')
-                        break;
 
+                        e.target.classList.add('flag')
+                        howManyFlags--
+                      
+                      
                 }
+               
             }
+            document.querySelector('.info').innerHTML =`left ${howManyFlags} bomb `
+                if(howManyFlags==0){
+                    document.querySelector('.info').innerHTML ='You Win!'
+                }
         }
+       
     })
+   
+
 }
 flags()
+
+
+    
