@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: dimgray;
+}
+
+.grid {
+    height: 400px;
+    width: 400px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    box-shadow: 3px 6px 8px 0 rgba(0, 0, 0, 0.6);
+
+}
+
+.item {
+    background-color: gray;
+   border: 1px solid #ddd;
+   border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+
+
+
+    .bomb {
+        /* background-color: maroon;  */
+       
+    }
+
+    .wybuch {
+        background-color: red;
+    }
+
+    .pudlo {
+        background-color: lightgray;
+    }
+
+    .flag {
+        background: url('flag.png');
+        background-size: cover;
+    }
