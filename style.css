@@ -55,6 +55,7 @@ body {
     background-repeat: no-repeat;
 }
 
+<<<<<<< HEAD
 .miss {
     background-color: lightgray;
     border: 8px solid rgba(255, 255, 255, 0.2);
@@ -65,3 +66,24 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+=======
+    .bomb {
+        /*background-color: maroon; */
+       
+    }
+
+    .wybuch {
+        background-color: red;
+    }
+
+    .pudlo {
+        background-color: lightgray;
+        border: 8px solid rgba(255,255,255,0.2);
+    }
+
+    .flag {
+        background: url('flag.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+>>>>>>> 9c47a7b71debd5edb135e1f4c322db5f6da80284
