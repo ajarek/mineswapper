@@ -3,8 +3,8 @@ let width = 10
 let squares = []
 let bomb = 20
 let draw = []
-let howManyFlags=bomb
-document.querySelector('.info').innerHTML =`left ${howManyFlags} bomb `
+let howManyFlags = bomb
+document.querySelector('.info').innerHTML = ` ${howManyFlags} bombs left `
 
 function drawBomb(k, n) {
     var numbers = new Array(n)
@@ -43,139 +43,120 @@ const createBoard = () => {
 }
 createBoard()
 
-const clickItem=(squares)=>{
+const clickItem = (squares) => {
 
-const items = document.querySelectorAll('.item').forEach((el, index) => {
+    const items = document.querySelectorAll('.item').forEach((el, index) => {
 
-    el.addEventListener('click', (e) => {
+        el.addEventListener('click', (e) => {
 
-        if (e.target.classList.contains('bomb')) {
-            alert('Game over');
-            e.target.classList.add('wybuch')
-            display()
-            setTimeout("window.location.reload()", 3000);
-        } else {
-            el.classList.add('pudlo')
-            data = squares[index].dataset.alert = ''
-            if( index==0){
-                if (squares[index + 1].classList.contains('bomb')) data++;
-                if (squares[index + width].classList.contains('bomb')) data++;
-                if (squares[index + width + 1].classList.contains('bomb')) data++;
-            }
-            else if(index==9){
-                if (squares[index - 1].classList.contains('bomb')) data++;
-                if (squares[index + width].classList.contains('bomb')) data++;
-                if (squares[index + width - 1].classList.contains('bomb')) data++;
-            }
-            else if(index==99){
-                if (squares[index - 1].classList.contains('bomb')) data++;
-                if (squares[index - width].classList.contains('bomb')) data++;
-                if (squares[index - width - 1].classList.contains('bomb')) data++;
-            }
-           else if (index < 9) {
-                if (squares[index - 1].classList.contains('bomb')) data++;
-                if (squares[index + 1].classList.contains('bomb')) data++;
-                if (squares[index + width - 1].classList.contains('bomb')) data++;
-                if (squares[index + width].classList.contains('bomb')) data++;
-                if (squares[index + width + 1].classList.contains('bomb')) data++;
-            } else if (index > 89) {
-                if (squares[index - width].classList.contains('bomb')) data++;
-                if (squares[index - width - 1].classList.contains('bomb')) data++;
-                if (squares[index - width + 1].classList.contains('bomb')) data++;
-                if (squares[index - 1].classList.contains('bomb')) data++;
-                if (squares[index + 1].classList.contains('bomb')) data++;
-            } else if (index % 10 === 0) {
-                if (squares[index - width].classList.contains('bomb')) data++;
-                if (squares[index + 1].classList.contains('bomb')) data++;
-                if (squares[index - width + 1].classList.contains('bomb')) data++;
-                if (squares[index + width].classList.contains('bomb')) data++;
-                if (squares[index + width + 1].classList.contains('bomb')) data++;
-            } else if (index % 10 === 9) {
-                if (squares[index - width].classList.contains('bomb')) data++;
-                if (squares[index + width].classList.contains('bomb')) data++;
-                if (squares[index + width - 1].classList.contains('bomb')) data++;
-                if (squares[index - width - 1].classList.contains('bomb')) data++;
-                if (squares[index - 1].classList.contains('bomb')) data++;
+            if (e.target.classList.contains('bomb')) {
+                alert('Game over');
+                e.target.classList.add('explosion')
+                display()
+                setTimeout("window.location.reload()", 3000);
             } else {
-                if (squares[index - width].classList.contains('bomb')) data++;
-                if (squares[index - width - 1].classList.contains('bomb')) data++;
-                if (squares[index - width + 1].classList.contains('bomb')) data++;
-                if (squares[index - 1].classList.contains('bomb')) data++;
-                if (squares[index + 1].classList.contains('bomb')) data++;
-                if (squares[index + width - 1].classList.contains('bomb')) data++;
-                if (squares[index + width].classList.contains('bomb')) data++;
-                if (squares[index + width + 1].classList.contains('bomb')) data++;
+                el.classList.add('miss')
+                data = squares[index].dataset.alert = ''
+                if (index == 0) {
+                    if (squares[index + 1].classList.contains('bomb')) data++;
+                    if (squares[index + width].classList.contains('bomb')) data++;
+                    if (squares[index + width + 1].classList.contains('bomb')) data++;
+                } else if (index == 9) {
+                    if (squares[index - 1].classList.contains('bomb')) data++;
+                    if (squares[index + width].classList.contains('bomb')) data++;
+                    if (squares[index + width - 1].classList.contains('bomb')) data++;
+                } else if (index == 90) {
+                    if (squares[index + 1].classList.contains('bomb')) data++;
+                    if (squares[index - width].classList.contains('bomb')) data++;
+                    if (squares[index - width + 1].classList.contains('bomb')) data++;
+                } else if (index == 99) {
+                    if (squares[index - 1].classList.contains('bomb')) data++;
+                    if (squares[index - width].classList.contains('bomb')) data++;
+                    if (squares[index - width - 1].classList.contains('bomb')) data++;
+                } else if (index < 9) {
+                    if (squares[index - 1].classList.contains('bomb')) data++;
+                    if (squares[index + 1].classList.contains('bomb')) data++;
+                    if (squares[index + width - 1].classList.contains('bomb')) data++;
+                    if (squares[index + width].classList.contains('bomb')) data++;
+                    if (squares[index + width + 1].classList.contains('bomb')) data++;
+                } else if (index > 89) {
+                    if (squares[index - width].classList.contains('bomb')) data++;
+                    if (squares[index - width - 1].classList.contains('bomb')) data++;
+                    if (squares[index - width + 1].classList.contains('bomb')) data++;
+                    if (squares[index - 1].classList.contains('bomb')) data++;
+                    if (squares[index + 1].classList.contains('bomb')) data++;
+                } else if (index % 10 === 0) {
+                    if (squares[index - width].classList.contains('bomb')) data++;
+                    if (squares[index + 1].classList.contains('bomb')) data++;
+                    if (squares[index - width + 1].classList.contains('bomb')) data++;
+                    if (squares[index + width].classList.contains('bomb')) data++;
+                    if (squares[index + width + 1].classList.contains('bomb')) data++;
+                } else if (index % 10 === 9) {
+                    if (squares[index - width].classList.contains('bomb')) data++;
+                    if (squares[index + width].classList.contains('bomb')) data++;
+                    if (squares[index + width - 1].classList.contains('bomb')) data++;
+                    if (squares[index - width - 1].classList.contains('bomb')) data++;
+                    if (squares[index - 1].classList.contains('bomb')) data++;
+                } else {
+                    if (squares[index - width].classList.contains('bomb')) data++;
+                    if (squares[index - width - 1].classList.contains('bomb')) data++;
+                    if (squares[index - width + 1].classList.contains('bomb')) data++;
+                    if (squares[index - 1].classList.contains('bomb')) data++;
+                    if (squares[index + 1].classList.contains('bomb')) data++;
+                    if (squares[index + width - 1].classList.contains('bomb')) data++;
+                    if (squares[index + width].classList.contains('bomb')) data++;
+                    if (squares[index + width + 1].classList.contains('bomb')) data++;
+                }
+                if (data == '1') {
+                    squares[index].style.color = 'green'
+                    squares[index].innerHTML = data
+                } else if (data == 2) {
+                    squares[index].style.color = 'blue'
+                    squares[index].innerHTML = data
+                } else if (data == 3) {
+                    squares[index].style.color = 'red'
+                    squares[index].innerHTML = data
+                } else {
+                    squares[index].style.color = 'rgb(50,10,102)'
+                    squares[index].innerHTML = data
+                }
             }
-            if (data == '1') {
-                squares[index].style.color = 'green'
-                squares[index].innerHTML = data
-            }
-            else  if (data == 2) {
-                squares[index].style.color = 'blue'
-                squares[index].innerHTML = data
-            }
-            else   if (data == 3) {
-                squares[index].style.color = 'red'
-                squares[index].innerHTML = data
-            }
-             else {
-                squares[index].style.color = 'rgb(50,10,102)'
-                squares[index].innerHTML = data
-            }
+        })
 
-
-        }
     })
-
-})
 }
 clickItem(squares)
 
 const display = () => {
     document.querySelectorAll('.item').forEach(el => {
         if (el.classList.contains('bomb')) {
-            el.classList.add('wybuch')
+            el.classList.add('explosion')
         }
     })
 }
 
+const flags = () => {
 
-
-function flags() {
-   
     const portion = document.querySelectorAll('.item')
     portion.forEach(buton => {
-     
-        buton.addEventListener('mouseup', MouseRightButton);
 
-        function MouseRightButton(e) {
-
+        const MouseRightButton = (e) => {
+            e.preventDefault()
             if (typeof e === 'object' && e.target.classList.contains('bomb')) {
                 switch (e.button) {
 
                     case 2:
-
                         e.target.classList.add('flag')
                         howManyFlags--
                         buton.removeEventListener('mouseup', MouseRightButton);
-                      
                 }
-               
             }
-            document.querySelector('.info').innerHTML =`left ${howManyFlags} bomb `
-                if(howManyFlags==0){
-                    document.querySelector('.info').innerHTML ='You Win!'
-                }
+            document.querySelector('.info').innerHTML = ` ${howManyFlags} bombs left `
+            if (howManyFlags == 0) {
+                document.querySelector('.info').innerHTML = 'You Win!'
+            }
         }
-       
+        buton.addEventListener('mouseup', MouseRightButton);
     })
-   
-
 }
 flags()
-
-
-
-
-
-    
