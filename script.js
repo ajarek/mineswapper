@@ -1,12 +1,19 @@
+window.addEventListener("DOMContentLoaded", event => {
+    const audio = new Audio('jazz.mp3')
+   audio.play()
+})
+
 const grid = document.querySelector('.grid')
 let width = 10
 let squares = []
 let bomb = 20
 let draw = []
 let howManyFlags = bomb
+
 document.querySelector('.info').innerHTML = ` ${howManyFlags} bombs left `
 
 function drawBomb(k, n) {
+    
     var numbers = new Array(n)
     for (var i = 0; i < n; i++) {
         numbers[i] = i + 1;
@@ -44,7 +51,7 @@ const createBoard = () => {
 createBoard()
 
 const clickItem = (squares) => {
-
+    
     const items = document.querySelectorAll('.item').forEach((el, index) => {
 
         el.addEventListener('click', (e) => {
